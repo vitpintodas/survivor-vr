@@ -16,7 +16,7 @@ import ExitDoor from "./ExitDoor.vue";
 </script>
 
 <template>
-  <a-entity
+  <!-- <a-entity
     gltf-model="#room"
     rotation="0 90 0"
     position="0 0 -5"
@@ -73,10 +73,10 @@ import ExitDoor from "./ExitDoor.vue";
     />
   </a-entity>
 
-  <ExitDoor />
+  <ExitDoor /> -->
 
   <!-- Main room navigation mesh  -->
-  <a-entity
+  <!-- <a-entity
     geometry="primitive: plane; height: 13.5; width: 6"
     position="0 0.01 -4.75"
     rotation="-90 0 0"
@@ -91,6 +91,13 @@ import ExitDoor from "./ExitDoor.vue";
     data-role="nav-mesh"
     material="color: red"
     visible="false"
+  ></a-entity> -->
+
+  <a-entity
+      gltf-model="#goblin"
+      position="0 1 -5"
+      scale="0.002 0.002 0.002"
+      look-at="target: #head"
   ></a-entity>
 
 </template>

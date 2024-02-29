@@ -1,65 +1,54 @@
 <script setup>
-  import { ref } from 'vue';
+import TheCameraRig from "./TheCameraRig.vue";
+import Ennemy from "./Ennemy.vue";
+import "../aframe/enemies.js";
+import "../aframe/look-at.js";
+import "../aframe/duplicate-me.js";
+import "../aframe/move-to.js";
+import "../aframe/clickable.js";
+import "../aframe/event-set.js";
 
-  import TheCameraRig from './TheCameraRig.vue';
-  import TheMainRoom from './TheMainRoom.vue';
-  import TheLifeCubeRoom from './TheLifeCubeRoom.vue';
-  import ThePhysicRoom from './ThePhysicRoom.vue';
+import { ref } from 'vue';
 
-  defineProps({
-    scale: Number,
-    overlaySelector: String,
-  });
+/**
+ * Gère l'apparition des énemis
+ */
+const totalEnemies = 10;
+const spacing = 4;
+const middlePoint = (totalEnemies - 1) * spacing / 2;
 
-  const allAssetsLoaded = ref(false);
+const enemiesPos = ref([...Array(totalEnemies)].map((_, index) => ({
+  x: (index * spacing) - middlePoint,
+  y: -0.044,
+  z: -30
+})));
+
+defineProps({
+  scale: Number,
+  overlaySelector: String,
+});
+
+const allAssetsLoaded = ref(false);
 </script>
 
 <template>
-  <a-scene
-    background="color: black;"
-    :webxr="`
-      requiredFeatures: local-floor;
-      referenceSpaceType: local-floor;
-      optionalFeatures: dom-overlay;
-      overlayElement: ${overlaySelector};
-    `"
-    xr-mode-ui="XRMode: xr"
-    physx="
-      autoLoad: true;
-      delay: 1000;
-      useDefaultScene: false;
-      wasmUrl: lib/physx.release.wasm;
-    "
-  >
+  <a-scene background="color: black;" stats>
+    <a-plane color="white" height="20" width="20" rotation="-90 0 0"></a-plane>
 
     <a-assets @loaded="allAssetsLoaded = true">
-      <!--
-        Title: VR Gallery
-        Model source: https://sketchfab.com/3d-models/vr-gallery-1ac32ed62fdf424498acc146fad31f7e
-        Model author: https://sketchfab.com/mvrc.art (Maxim Mavrichev)
-        Model license: CC BY 4.0 ( https://creativecommons.org/licenses/by/4.0/ )
-      -->
-      <a-asset-item id="room" src="assets/vr_gallery.glb"></a-asset-item>
-      <!--
-        Title: 3D Gallery for VR projects
-        Model source: https://sketchfab.com/3d-models/3d-gallery-for-vr-projects-68f77ed8558c4bd59e0a13e2cc9d1fd1
-        Model author: https://sketchfab.com/tekuto1s (tekuto1s)
-        Model license: CC BY 4.0 ( https://creativecommons.org/licenses/by/4.0/ )
-      -->
-      <a-asset-item id="physic-room" src="assets/3d_gallery_for_vr_projects.glb"></a-asset-item>
-      <a-asset-item id="sound-1" response-type="arraybuffer" src="assets/sound1.mp3" preload="auto"></a-asset-item>
-      <img id="room-physic-out-texture" :src="`assets/main-room-from-physic-room.png`">
-      <img id="room-gol-out-texture" :src="`assets/main-room-from-gol-room.png`">
-      <img id="room-physic-texture" :src="`assets/physicRoom.png`">
+      <a-asset-item id="goblin" src="assets/lowpoly_wizard.glb"></a-asset-item>
     </a-assets>
 
     <template v-if="allAssetsLoaded">
-      <TheMainRoom :scale="scale" />
-      <TheLifeCubeRoom />
-      <ThePhysicRoom />
+      <Ennemy v-for="(position, index) in enemiesPos" :key="index" :position="`${position.x} ${position.y} ${position.z}`" />
+
+      <a-box
+        color="blue"
+        position="0, 0.5, 0"
+        depth="1"
+      ></a-box>
     </template>
 
     <TheCameraRig />
-
   </a-scene>
 </template>
