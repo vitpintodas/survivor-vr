@@ -4,6 +4,7 @@
   import '../aframe/simple-navmesh-constraint.js';
   import '../aframe/blink-controls.js';
   import '../aframe/physx-grab.js';
+  import '../aframe/fire-ball.js';
 </script>
 
 <template>
@@ -52,10 +53,12 @@
 
       <a-entity
         id="hand-right"
+        oculus-touch-controls="hand: right; model: false"
         hand-controls="hand: right"
         laser-controls="hand: right"
-        raycaster="far: 4; objects: [clickable]; showLine: true;"
+        raycaster="far: 400; objects: [clickable]; showLine: true;"
         physx-grab
+        @triggerdown="fireball"
       >
         <a-sphere id="hand-right-collider"
           radius="0.02"

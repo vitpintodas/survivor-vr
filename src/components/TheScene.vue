@@ -48,7 +48,6 @@ const allAssetsLoaded = ref(false);
         depth="1"
       ></a-box>
     </template>
-
     <TheCameraRig />
   </a-scene>
 </template>

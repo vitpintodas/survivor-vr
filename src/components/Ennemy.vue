@@ -1,10 +1,9 @@
 <script setup>
-import "../aframe/emit-when-near.js";
-import "../aframe/event-set.js";
 import "../aframe/clickable.js";
 
-function removeMesh() {
+function removeMesh(el) {
   console.log('bonjour');
+  el.parentNode.removeChild(el);
 }
 
 defineProps({
@@ -14,15 +13,6 @@ defineProps({
 </script>
 
 <template>
-  <!-- <a-entity
-    gltf-model="#goblin"
-    position="0 -0.044 -30"
-    scale="0.0013 0.0013 0.0013"
-    look-at="target: #head"
-    duplicate-me="nbTimes: 2; msInterval: 100"
-    clickable
-    move-to
-  ></a-entity> -->
   <a-entity
     gltf-model="#goblin"
     position="0 -0.044 -30"
@@ -31,6 +21,6 @@ defineProps({
     clickable
     move-to
 
-    @click="kill = removeMesh()"
+    @click="removeMesh($event.target)"
   ></a-entity>
 </template>
