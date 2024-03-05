@@ -56,10 +56,10 @@
         oculus-touch-controls="hand: right; model: false"
         hand-controls="hand: right"
         laser-controls="hand: right"
-        raycaster="far: 400; objects: [clickable]; showLine: true;"
         physx-grab
-        @triggerdown="fireball"
+        fire-ball
       >
+        <a-entity id="fireball-thrower" rotation="-90 0 0"></a-entity>
         <a-sphere id="hand-right-collider"
           radius="0.02"
           visible="false"

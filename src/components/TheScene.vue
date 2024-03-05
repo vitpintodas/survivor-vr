@@ -7,6 +7,8 @@ import "../aframe/duplicate-me.js";
 import "../aframe/move-to.js";
 import "../aframe/clickable.js";
 import "../aframe/event-set.js";
+import "../aframe/fire-ball"
+import "../aframe/fire-ball-movement";
 
 import { ref } from 'vue';
 
@@ -33,11 +35,13 @@ const allAssetsLoaded = ref(false);
 
 <template>
   <a-scene background="color: black;" stats>
-    <a-plane color="white" height="20" width="20" rotation="-90 0 0"></a-plane>
 
     <a-assets @loaded="allAssetsLoaded = true">
       <a-asset-item id="goblin" src="assets/lowpoly_wizard.glb"></a-asset-item>
+      <img id="lave-texture" :src="assets/lava.jpg">
     </a-assets>
+
+    <a-plane height="20" width="20" material="src: #lave-texture)" rotation="-90 0 0"></a-plane>
 
     <template v-if="allAssetsLoaded">
       <Ennemy v-for="(position, index) in enemiesPos" :key="index" :position="`${position.x} ${position.y} ${position.z}`" />
