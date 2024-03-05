@@ -38,12 +38,12 @@ const allAssetsLoaded = ref(false);
 
     <a-assets @loaded="allAssetsLoaded = true">
       <a-asset-item id="goblin" src="assets/lowpoly_wizard.glb"></a-asset-item>
-      <img id="lave-texture" :src="assets/lava.jpg">
+      <img id="lave-texture" :src="`assets/lava.jpg`">
+      <img id="sol-texture" :src="`assets/stone_floor.jpg`">
     </a-assets>
 
-    <a-plane height="20" width="20" material="src: #lave-texture)" rotation="-90 0 0"></a-plane>
-
-    <template v-if="allAssetsLoaded">
+    <template v-if="allAssetsLoaded" fog>
+      <a-plane height="50" width="50" material="src: #sol-texture; repeat: 10 10" rotation="-90 0 0"></a-plane>
       <Ennemy v-for="(position, index) in enemiesPos" :key="index" :position="`${position.x} ${position.y} ${position.z}`" />
 
       <a-box

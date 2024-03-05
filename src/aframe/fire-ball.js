@@ -12,7 +12,7 @@ AFRAME.registerComponent("fire-ball", {
       // création de la boule de feu
       const fireball = document.createElement("a-entity");
       fireball.setAttribute("geometry", "primitive: sphere; radius: 0.1");
-      fireball.setAttribute("material", "src: #lava");
+      fireball.setAttribute("material", "src: #lave-texture");
       fireball.setAttribute(
         "physx-body",
         "type: kinematic; emitCollisionEvents: true"
