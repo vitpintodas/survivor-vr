@@ -18,9 +18,9 @@
 <template>
   <div id="onboarding" v-if="showOnboarding">
     <div>
-      <h1>A-Frame + Vite + Vue Boilerplate</h1>
+      <h1>A-Frame Survivor</h1>
       <p v-if="!loaded">loading...</p>
-      <button v-if="loaded" @click="enterScene()">Enter scene</button>
+      <button v-if="loaded" @click="enterScene()">Start Surviving</button>
       <div class="licences">
       <section>
         <h4>Movement modes support</h4>
@@ -30,12 +30,7 @@
             control (Drag and drop)
           </li>
           <li>
-            Mobile – 1x Finger touch to go forward + 2x Fingers touch to go
-            backward + Gaze cursor for click
-          </li>
-          <li>
-            VR Headset – AR/VR walk + Teleport (Grip for grab and laser for
-            click) + Gaze cursor for click
+            VR Headset - AR/VR walk + right trigger to throw fireball
           </li>
         </ul>
       </section>
@@ -75,11 +70,38 @@
           </dd>
 
           <dt>
-            <a href="https://sketchfab.com/3d-models/3d-gallery-for-vr-projects-68f77ed8558c4bd59e0a13e2cc9d1fd1" target="_blank">Physic room model</a>
+            <a href="https://skfb.ly/ozovR" target="_blank">Lowpoly Skeleteon</a>
           </dt><dd>
-            by <a href="https://sketchfab.com/tekuto1s" target="_blank">tekuto1s</a>
+            by <a href="https://sketchfab.com/berti_buchsbaum" target="_blank">berti_buchsbaum</a>
             under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
           </dd>
+
+          <dt>
+            <a href="https://3dtextures.me/2022/05/21/stylized-stone-floor-005/" target="_blank">stylized stone floor 005</a>
+          </dt><dd>
+            by <a href="https://3dtextures.me/author/gendosplace/" target="_blank">katsukagi</a>
+            under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+          </dd>
+
+          <dt>
+            <a href="https://3dtextures.me/2018/09/08/lava-005/" target="_blank">lava 005</a>
+          </dt><dd>
+            by <a href="https://3dtextures.me/author/gendosplace/" target="_blank">katsukagi</a>
+            under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>
+          </dd>
+
+          <dt>
+            <a href="https://www.gamedevmarket.net/asset/game-jingles-and-8bit-sound-fx-5358" target="_blank">8bit_destroy_1</a>
+          </dt><dd>
+            by <a href="https://www.gamedevmarket.net/member/wowsoundsg" target="_blank">wowsoundsg</a>
+          </dd>
+
+          <dt>
+            <a href="https://www.gamedevmarket.net/asset/game-jingles-and-8bit-sound-fx-5358" target="_blank">Abstract Experimental Track #2 (looped)</a>
+          </dt><dd>
+            by <a href="https://www.gamedevmarket.net/member/wowsoundsg" target="_blank">wowsoundsg</a>
+          </dd>
+          
         </dl>
       </div>
     </div>
@@ -89,7 +111,7 @@
 <style scoped>
   h1 { font-size: 1.5rem }
   a {
-    color: #eee;
+    color: #eeeeee;
     text-decoration: none;
   }
   .licences {
@@ -111,7 +133,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #333;
+    background-color: #495c60;
     color: #ccc;
     width: 100vw;
     height: 100vh;

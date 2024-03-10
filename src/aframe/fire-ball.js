@@ -15,8 +15,13 @@ AFRAME.registerComponent("fire-ball", {
       fireball.setAttribute("material", "src: #lave-texture");
       fireball.setAttribute(
         "physx-body",
-        "type: kinematic; emitCollisionEvents: true"
+        "type: kinematic; emitCollisionEvents: true;"
       );
+      fireball.setAttribute(
+        "physx-material",
+        "collisionLayers: [2, 3]; collidesWithLayers: [1];"
+      );
+      fireball.setAttribute('id', 'fireball');
       fireball.setAttribute('fire-ball-movement', {});
 
       // position et rotation intiales
@@ -25,16 +30,10 @@ AFRAME.registerComponent("fire-ball", {
       this.el.object3D.getWorldPosition(worldPos);
       this.el.object3D.getWorldDirection(direction);
       fireball.setAttribute("position", worldPos);
-      // fireball.setAttribute("direction", direction);
       copyRotation(document.getElementById('fireball-thrower'), fireball);
-
-      // this.normal = new THREE.Vector3();
-      // this.el.object3D.getWorldDirection(this.normal);
 
       // ajout de boule de feu à la scène
       this.el.sceneEl.appendChild(fireball);
-
-      // fireball.setAttribute("fireball-movement", `normal: ' + this.normal.x +);
 
       setTimeout(() => {
         fireball.parentNode.removeChild(fireball);

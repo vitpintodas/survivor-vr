@@ -2,6 +2,7 @@ AFRAME.registerComponent('look-at', {
     schema: {
       target: {type: 'selector', default: '[camera]'},
       enabled: {type: 'boolean', default: true},
+      constrainVertically: {type: "boolean", default: false},
     },
   
     init: function () {
@@ -11,7 +12,6 @@ AFRAME.registerComponent('look-at', {
     },
   
     update: function () {
-      //if (this.data.enabled) return;
       if (this.data.enabled)
       {
         return;
@@ -26,6 +26,12 @@ AFRAME.registerComponent('look-at', {
       if (!this.data.target) return;
       this.data.target.object3D.getWorldPosition(this.targetWorldPos);
       this.el.object3D.getWorldPosition(this.myWorldPos);
+
+      if (this.data.constrainVertically)
+      {
+        this.targetWorldPos.y = this.myWorldPos.y;
+      }
+
       this.el.object3D.lookAt(this.targetWorldPos);
     }
   });

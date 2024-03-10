@@ -2,11 +2,7 @@ import { copyPosition, copyRotation } from "../utils/aframe";
 
 AFRAME.registerComponent('fire-ball-movement', {
     schema: {
-        speed: { type: "number", default: 5 },
-    },
-
-    init: function () {
-      // Do something when component first attached.
+        speed: { type: "number", default: 15 },
     },
 
     tick: function (time, timeDelta) {
@@ -18,7 +14,7 @@ AFRAME.registerComponent('fire-ball-movement', {
 
         const velocity = this.data.speed;
         const movement = direction.multiplyScalar(velocity * deltaTime);
-        
+
 
         this.el.object3D.position.add(movement);
     }

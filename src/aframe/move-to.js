@@ -1,6 +1,6 @@
 AFRAME.registerComponent('move-to', {
     schema: {
-        speed: {type: 'number', default: 3},
+        speed: {type: 'number', default: 1.5},
         canMove: {type: 'boolean', default: true},
         stopDistance: {type: 'number', default: 2},
         followDistance: {type: 'number', default: 3}

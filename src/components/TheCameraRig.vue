@@ -42,30 +42,16 @@
           collisionEntities: [data-role='nav-mesh'];
           snapTurn: false;
         "
-        physx-grab
-      >
-        <a-sphere id="hand-left-collider"
-          radius="0.02"
-          visible="false"
-          physx-body="type: kinematic; emitCollisionEvents: true">
-        </a-sphere>
-      </a-entity>
+      ></a-entity>
 
       <a-entity
         id="hand-right"
         oculus-touch-controls="hand: right; model: false"
         hand-controls="hand: right"
         laser-controls="hand: right"
-        physx-grab
         fire-ball
       >
         <a-entity id="fireball-thrower" rotation="-90 0 0"></a-entity>
-        <a-sphere id="hand-right-collider"
-          radius="0.02"
-          visible="false"
-          physx-body="type: kinematic; emitCollisionEvents: true">
-        </a-sphere>
       </a-entity>
-
   </a-entity>
 </template>
